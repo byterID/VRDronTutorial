@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Prop
-  - Prop2
-  - Prop3
-  - Prop4
+  - Vert
+  - PlayerHand
   layers:
   - Default
   - TransparentFX
