@@ -19,15 +19,15 @@ public class JoystickControl : MonoBehaviour
     void Update()
     {
         forwardBackwardTilt = topOfJoystick.rotation.eulerAngles.x;
-        if (forwardBackwardTilt < 74 && forwardBackwardTilt > 5)
+        if (forwardBackwardTilt < 355 && forwardBackwardTilt > 270)
         {
             forwardBackwardTilt = Mathf.Abs(forwardBackwardTilt - 360);
-            Debug.Log("Forward" + forwardBackwardTilt);
-            Dron.GetComponent<Drone>().GoUp();
-        }
-        else if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290 )
-        {
             Debug.Log("Backward" + forwardBackwardTilt);
+            //Dron.GetComponent<Drone>().GoUp();
+        }
+        if (forwardBackwardTilt < 74 && forwardBackwardTilt > 5)
+        {
+            Debug.Log("Forward" + forwardBackwardTilt);
             Dron.GetComponent<Drone>().GoUp();
         }
 

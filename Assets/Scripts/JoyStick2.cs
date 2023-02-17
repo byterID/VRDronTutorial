@@ -25,7 +25,7 @@ public class JoyStick2 : MonoBehaviour
             Debug.Log("Forward" + forwardBackwardTilt);
             Dron.GetComponent<Drone>().GoForward();
         }
-        else if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
+        if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
         {
             Debug.Log("Backward" + forwardBackwardTilt);
             Dron.GetComponent<Drone>().GoBackward();
