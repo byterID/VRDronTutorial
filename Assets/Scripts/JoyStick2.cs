@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoystickControl : MonoBehaviour
+public class JoyStick2 : MonoBehaviour
 {
     public GameObject Dron;
     public Transform topOfJoystick;
@@ -23,29 +23,29 @@ public class JoystickControl : MonoBehaviour
         {
             forwardBackwardTilt = Mathf.Abs(forwardBackwardTilt - 360);
             Debug.Log("Forward" + forwardBackwardTilt);
-            Dron.GetComponent<Drone>().GoUp();
+            Dron.GetComponent<Drone>().GoForward();
         }
-        else if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290 )
+        else if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
         {
             Debug.Log("Backward" + forwardBackwardTilt);
-            Dron.GetComponent<Drone>().GoUp();
+            Dron.GetComponent<Drone>().GoBackward();
         }
 
         sideToSideTilt = topOfJoystick.rotation.eulerAngles.z;
         if (sideToSideTilt < 355 && sideToSideTilt > 290)
         {
             sideToSideTilt = Mathf.Abs(sideToSideTilt - 360);
-            Dron.GetComponent<Drone>().TurnRight();
+            Dron.GetComponent<Drone>().GoRight();
         }
         else if (sideToSideTilt > 5 && sideToSideTilt < 74)
         {
-            Dron.GetComponent<Drone>().TurnLeft();
+            Dron.GetComponent<Drone>().GoLeft();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("PlayerHand"))
+        if (other.CompareTag("PlayerHand"))
         {
             transform.LookAt(other.transform.position, transform.up);
         }

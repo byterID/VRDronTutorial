@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
-    public float MoveSpeed = 10f;
+    public float MoveSpeed = 1000f;
     public float SpeedRotation = 10f;
 
     Rigidbody rb;
@@ -15,14 +15,32 @@ public class Drone : MonoBehaviour
 
     public void GoUp()
     {
-        rb.AddRelativeForce(0, MoveSpeed * Time.deltaTime, 0);
+        rb.AddRelativeForce(Vector3.forward * MoveSpeed * Time.deltaTime, ForceMode.Impulse);
+        //transform.localPosition += new Vector3(0.5f,0,0);
     }
     public void TurnLeft()
     {
-        transform.Rotate(0, -SpeedRotation * Time.deltaTime, 0);
+        transform.Rotate(0, 0, -SpeedRotation * Time.deltaTime);
     }
     public void TurnRight()
     {
-        transform.Rotate(0, SpeedRotation * Time.deltaTime, 0);
+        transform.Rotate(0, 0, SpeedRotation * Time.deltaTime);
+    }
+    public void GoForward()
+    {
+        
+        rb.AddRelativeForce(Vector3.up * MoveSpeed, ForceMode.Impulse);
+    }
+    public void GoBackward()
+    {
+        rb.AddRelativeForce(Vector3.up * -MoveSpeed * Time.deltaTime, ForceMode.Impulse);
+    }
+    public void GoRight()
+    {
+        rb.AddRelativeForce(Vector3.right * MoveSpeed * Time.deltaTime, ForceMode.Impulse);
+    }
+    public void GoLeft()
+    {
+        rb.AddRelativeForce(Vector3.left * MoveSpeed * Time.deltaTime, ForceMode.Impulse);
     }
 }
